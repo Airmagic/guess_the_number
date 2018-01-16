@@ -36,12 +36,17 @@ def main():
     secret = generate_secret(low, high)
 
     while True:
-        guess = get_guess()
-        result = check_guess(guess, secret)
-        print(result)
+        try:
+            guess = get_guess()
+            result = check_guess(guess, secret)
+            print(result)
 
-        if result == correct:
-            break
+            if result == correct:
+                break
+
+        except ValueError:
+            print('needs to be a number, guess again')
+            guess = get_guess()
 
 
 if __name__ == '__main__':
