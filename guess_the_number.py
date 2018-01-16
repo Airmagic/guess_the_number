@@ -7,7 +7,9 @@ guesses = 0
 
 def configure_range():
     '''Set the high and low values for the random number'''
-    return 1, 10
+    low = int(input("Lowest possible number for secret number?\n"))
+    high = int(input("Highest possible number for secret number?\n"))
+    return low, high
 
 
 def generate_secret(low, high):
@@ -48,6 +50,10 @@ def main():
             if result == correct:
                 print("Number of guesses: " + str(guesses))
                 replay = input("Would you like to play again? (y/n)\n")
+                if replay!="y" or replay!="Y" or replay!="Yes" or replay!="YES":
+                    print("Goodbye!")
+                    exit(0)
+                (low, high) = configure_range()
                 secret = generate_secret(low, high)
                 guesses = 0
 
