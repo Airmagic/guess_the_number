@@ -38,7 +38,7 @@ def main():
     (low, high) = configure_range()
     secret = generate_secret(low, high)
 
-    while replay=="y":
+    while replay=="y" or replay=="Y" or replay=="Yes" or replay=="YES":
         try:
             guess = get_guess()
             guesses+=1
