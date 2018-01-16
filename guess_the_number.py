@@ -33,19 +33,23 @@ def check_guess(guess, secret):
 def main():
 
     guesses = 0
+    replay = "y"
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
 
-    while True:
+    while replay=="y":
         try:
             guess = get_guess()
             guesses+=1
             result = check_guess(guess, secret)
-            print(result + " Number of guesses: " + str(guesses))
+            print(result)
 
             if result == correct:
-                break
+                print("Number of guesses: " + str(guesses))
+                replay = input("Would you like to play again? (y/n)\n")
+                secret = generate_secret(low, high)
+                guesses = 0
 
         except ValueError:
             print('needs to be a number, guess again')
